@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+mysql:
+  database: lala_cloud_system
+
+gen:
+  project-name: system
+  package-name: com.jerry.up.lala.cloud.server.system
+
+api:
+  doc: https://jerry-up-lala-cloud.apifox.cn
+  count: 172
+
+upload:
+  max: ${env.upload.max}
+  partition: ${env.upload.partition}

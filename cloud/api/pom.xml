@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jerry.up.lala.cloud</groupId>
+    <artifactId>api</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>lala SpringCloud版本 公共模块</name>
+
+    <modules>
+        <module>system-api</module>
+        <module>core-api</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-snapshot-3GEFXp/</url>
+        </repository>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-release-DDVVbg/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-release-DDVVbg/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-snapshot-3GEFXp/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

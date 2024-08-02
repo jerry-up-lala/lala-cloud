@@ -1,0 +1,29 @@
+spring:
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${env.nacos.discovery.host}
+        username: ${env.nacos.discovery.username}
+        password: ${env.nacos.discovery.password}
+        group: ${env.nacos.discovery.group}
+          
+    sentinel:
+      log:
+        dir: ${common.dataPath}/logs/${spring.application.name}/csp
+      transport:
+        dashboard: ${env.sentinel.host}
+
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jerry.up.lala.cloud</groupId>
+    <artifactId>system-api</artifactId>
+    <version>1.0.0</version>
+
+    <name>lala SpringCloud版本 系统服务公共模块</name>
+
+    <properties>
+        <lala-framework.version>1.0.0</lala-framework.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jerry.up.lala.framework</groupId>
+            <artifactId>framework-cloud</artifactId>
+            <version>${lala-framework.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <attach>true</attach>
+                    <includePom>true</includePom>
+                    <excludeResources>true</excludeResources>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-snapshot-3GEFXp/</url>
+        </repository>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-release-DDVVbg/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-release-DDVVbg/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2365883-snapshot-3GEFXp/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

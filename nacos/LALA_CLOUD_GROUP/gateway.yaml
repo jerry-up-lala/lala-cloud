@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+logging:
+  config: classpath:logback-common.xml
+
+common:
+  dataPath: ${DATA_PATH:/data}
+
+  openUrls: 
+    - /**/open/**
+    - /**/error/**
+
+redis:
+  host: ${env.redis.host}
+  password: ${env.redis.password}
+
+error:
+  catch-print: ${env.error.catchPrint}
+  service-print: ${env.error.servicePrint}
+  runTime-print: ${env.error.runTimePrint}
+
+spring:
+
+  datasource:
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${env.mysql.host}/lala_cloud_gateway?autoReconnect=true&useAffectedRows=true&useSSL=false&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
+    username: ${env.mysql.username}
+    password: ${env.mysql.password}
+
+    druid:
+      initialSize: 5
+      minIdle: 10
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      maxEvictableIdleTimeMillis: 900000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${env.nacos.discovery.host}
+        username: ${env.nacos.discovery.username}
+        password: ${env.nacos.discovery.password}
+        group: ${env.nacos.discovery.group}
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+sa-token:
+  token-name: Authorization
+  timeout: -1
+  activity-timeout: ${env.token.activityTimeout}
+  is-concurrent: false
+  is-share: false
+  max-login-count: -1
+  token-prefix: Bearer
+  is-print: false
+  is-log: false
+  jwt-secret-key: ${env.token.jwtSecretKey}
+
+  alone-redis:
+    host: ${env.token.redisHost}
+    port: ${env.token.redisPort}
+    password: ${env.token.redisPassword}
+    database: ${env.token.redisDatabase}
+    timeout: 60s

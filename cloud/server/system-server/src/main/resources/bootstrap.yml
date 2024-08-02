@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: system-server
+  cloud:
+    nacos:
+      config:
+        server-addr: ${NACOS_CONFIG_HOST:127.0.0.1:8848}
+        group: ${NACOS_CONFIG_GROUP:LALA_CLOUD_GROUP}
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        extension-configs:
+          - data-id: ${NACOS_CONFIG_ENV:env.local.yaml}
+            group: ${NACOS_CONFIG_GROUP:LALA_CLOUD_GROUP}
+            refresh: true
+          - data-id: framework-boot.yaml
+            group: ${NACOS_CONFIG_GROUP:LALA_CLOUD_GROUP}
+            refresh: true
+          - data-id: framework-cloud.yaml
+            group: ${NACOS_CONFIG_GROUP:LALA_CLOUD_GROUP}
+            refresh: true
